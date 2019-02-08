@@ -1,14 +1,14 @@
 from flask import Blueprint
-
 from app.version1.controllers import creat_orders, get_all, get_one, edit_order, delete_one
+
 
 food_app = Blueprint('food_app', __name__)
 
 
 @food_app.route('/orders', methods=['POST'])
 def creat_new():
-    create = creat_orders()
-    return create
+        create = creat_orders()
+        return create
 
 
 @food_app.route('/orders', methods=['GET'])
