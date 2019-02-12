@@ -8,6 +8,8 @@ install:
   -pip install coveralls
 
 
-script: -nosetests -v tests/test_orders.py
+script:
+  -pytest tests/ --cov=tests/ --cov-report term-missing
 
-after_sucess: coveralls
+after_sucess:
+  -coveralls
