@@ -1,28 +1,37 @@
-from flask import request, jsonify, abort
+from flask import request, jsonify
 
 from app.version1.models import Orders, orders_list
 
 
-def check(word):
-    isalphabet = 'abcdefghijklmnopqrstuvwxyz'
-    word = str(word)
-    for char in isalphabet:
-        if char in word:
-            return word
-    return abort(400)
+# def check(new_order):
+#    """This faction validates the new order input"""
+#        # keys should have values
+#        if not value:
+#            return "{} is is empty. The value is required".format(key)
+#        if key == "order" or key == "comment":
+#            if len(value) < 3 or value == int:
+#                return "The value provided on {} is too short or ValueError".format(key)
+#        if key == "price" or key == "delivery_time":
+#            if value == str:
+#                return "On the {} value should be an integer".format(key)
+
+#        if key == "delivery_time":
+#            if value == int:
+#                return "On the {} value should be a string".format(key)
 
 
 def creat_orders():
     req = request.get_json()
     try:
         data = {
-            "order": check(req['order']),
-            "price": int(req['price']),
-            "comment": check(req['comment']),
-            "delivery_time": str(req['delivery_time'])
+            "order": req['order'],
+            "price": req['price'],
+            "comment": req['comment'],
+            "delivery_time": req['delivery_time']
         }
 
         new_order = Orders(data['order'], data['price'], data['comment'], data['delivery_time'])
+
         orders_list.append(new_order.__dict__)
         return jsonify({
             "message": "Created",
