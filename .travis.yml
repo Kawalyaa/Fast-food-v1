@@ -6,11 +6,10 @@ python:
 
 install:
   - pip install -r requirements.txt
-  - pip install coveralls
 
 
 script:
-  - nosetests -v tests/test_orders.py
+   - nosetests -v --with-coverage --cover-package=app
 
 after_success:
   - coveralls
