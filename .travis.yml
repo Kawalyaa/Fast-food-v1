@@ -10,7 +10,7 @@ install:
 
 
 script:
-  - nosetests -v tests/test_oders.py
+  - nosetests -v tests/test_orders.py
 
 after_success:
   - coveralls
