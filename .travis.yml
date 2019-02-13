@@ -1,15 +1,16 @@
+
 language: python
 
 python:
-  -3.6
+  - "3.6"
 
 install:
-  -pip install requirements.txt
-  -pip install coveralls
+  - pip install -r requirements.txt
+  - pip install coveralls
 
 
 script:
-  -pytest tests/ --cov=tests/ --cov-report term-missing
+  - nosetests -v tests/test_oders.py
 
-after_sucess:
-  -coveralls
+after_success:
+  - coveralls
